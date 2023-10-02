@@ -1,0 +1,30 @@
+{
+  "name": "applemusic_downloader",
+  "version": "1.0.0",
+  "description": "To download apple music playlist songs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node app.js"
+  },
+  "repository": "git+https://github.com/omh02033/applemusic_downloader.git",
+  "author": "오명훈 <omh02033@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.8.0",
+    "@types/prompt": "^1.1.6",
+    "axios": "^0.21.1",
+    "html-entities": "^2.1.0",
+    "jssoup": "0.0.12",
+    "node-id3": "^0.2.3",
+    "progress": "^2.0.3",
+    "prompt": "^1.3.0",
+    "request": "^2.88.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "bugs": {
+    "url": "https://github.com/omh02033/applemusic_downloader/issues"
+  },
+  "homepage": "https://github.com/omh02033/applemusic_downloader#readme"
+}
