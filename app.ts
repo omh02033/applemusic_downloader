@@ -1,11 +1,11 @@
-import fs from 'fs';
-import ProgressBar from 'progress';
-import axios from 'axios';
-import NodeID3 from 'node-id3';
-import prompt from 'prompt';
+import fs from "fs";
+import ProgressBar from "progress";
+import axios from "axios";
+import NodeID3 from "node-id3";
+import prompt from "prompt";
 
-import getPlaylist from './src/getPlaylist';
-import getDownloadLink from './src/getDownloadLink';
+import getPlaylist from "./src/getPlaylist";
+import getDownloadLink from "./src/getDownloadLink";
 
 let index = -1;
 let songList: Array<any> = [];
@@ -18,11 +18,11 @@ let notFound: Array<{
 }> = [];
 
 const downloadSong = async (
-  songName,
-  singerName,
-  songImageUrl,
-  songDownloadUrl,
-  songTitleFound
+  songName: string,
+  singerName: string,
+  songImageUrl: string,
+  songDownloadUrl: string,
+  songTitleFound: string
 ) => {
   try {
     let numb = index + 1;
@@ -35,7 +35,6 @@ const downloadSong = async (
 
     const filepath = `./songs/${songTitleFound}.mp3`;
 
-    //for progress bar...
     const totalLength = headers["content-length"];
     const progressBar = new ProgressBar(
       "-> downloading [:bar] :percent :etas",
@@ -48,7 +47,7 @@ const downloadSong = async (
       }
     );
 
-    data.on("data", (chunk) => progressBar.tick(chunk.length));
+    data.on("data", (chunk: any) => progressBar.tick(chunk.length));
     data.on("end", async () => {
       singerName = singerName.replace(/\s{2,10}/g, "");
       console.log("Song Downloaded!");
@@ -82,7 +81,7 @@ const downloadSong = async (
   }
 };
 
-const downloadImage = async (songImageUrl, imageFilePath) => {
+const downloadImage = async (songImageUrl: string, imageFilePath: string) => {
   try {
     const response = await axios({
       method: "GET",
@@ -163,7 +162,9 @@ const startNextSong = async () => {
 
 const start = async () => {
   prompt.start();
-  const { Playlist_URL } = await prompt.get(["Playlist_URL"]);
+  const { Playlist_URL }: { Playlist_URL: string } = await prompt.get([
+    "Playlist_URL",
+  ]);
 
   try {
     const res = await getPlaylist(Playlist_URL);

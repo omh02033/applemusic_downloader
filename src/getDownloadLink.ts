@@ -3,9 +3,9 @@ const axios = require("axios");
 const INFO_URL = "https://slider.kz/vk_auth.php?q=";
 
 export default async (
-  songName,
-  singerName,
-  songDurationSec
+  songName: string,
+  singerName: string,
+  songDurationSec: number
 ) => {
   let query = `${singerName}%20-%20${songName}`.replace(/\s/g, "%20");
 

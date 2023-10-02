@@ -1,7 +1,7 @@
 import axios from 'axios';
 import htmlEntities from 'html-entities';
 
-export default async (url) => {
+export default async (url: string) => {
   let playlistObj: {
     playlist: string;
     user: string;
@@ -26,7 +26,12 @@ export default async (url) => {
 
   playlistObj.songs = [];
 
-  data.result.tracks.forEach((track) => {
+  data.result.tracks.forEach((track: {
+    name: string;
+    artists: string;
+    duration_ms: number;
+    image: string;
+  }) => {
     playlistObj.songs.push({
       songName: htmlEntities.decode(track.name),
       singerName: htmlEntities.decode(track.artists),
